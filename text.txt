@@ -1,0 +1,25 @@
+ // const = {uesrname: this.uesrname, password: this.password}
+      if (this.username !== '' && this.password !== '') {
+         this.$store.dispatch('login/userLogin', {
+          username: this.username,
+          password: this.password,
+         }).then((res) => {
+          // console.log(res);
+           this.$swal({
+             title: 'You have successfully login.',
+             icon: 'success',
+             allowEscapeKey: false,
+             allowOutsideClick: false,
+             timer: 4000,
+             timerProgressBar: true,
+             text: 'You will be directed to our dashboard.',
+             showConfirmButton: false,
+           })
+        })
+      }
+
+}, {
+    path: "/formBuilder/folder/:folderID/form/:formID",
+    components: {
+      default: _7232cc0a
+    }
