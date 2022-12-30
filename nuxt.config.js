@@ -35,12 +35,7 @@ export default {
   css: ['~/assets/scss/_variables.scss', '~/assets/scss/wrapper.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '~plugins/storage.plugin',
-    '~services/ApiService',
-    '~plugins/services.plugin',
-    '~plugins/bootstrap-icons',
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -85,16 +80,16 @@ export default {
   build: {},
   // ExtendingRouter
   // router: {
-  //   extendRoutes(routes, resolve) {
-  //     routes.push({
-  //       path: '/formBuilder/folder/:folderID/form/:formID',
-  //       components: {
-  //         default: resolve(__dirname, 'pages/formBuilder/_folderSections.vue'),
-  //       },
-  //       chunkNames: {
-
-  //       }
-  //     })
-  //   }
-  // }
+    // middleware: 'auth',
+    //   extendRoutes(routes, resolve) {
+    //     routes.push({
+    //       path: '/formBuilder/folder/:folderID/form/:formID',
+    //       components: {
+    //         default: resolve(__dirname, 'pages/formBuilder/_folderSections.vue'),
+    //       },
+    //       chunkNames: {
+    //       }
+    //     })
+    //   }
+  // },
 }

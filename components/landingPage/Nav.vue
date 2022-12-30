@@ -17,17 +17,18 @@
         </div>
         <!-- links -->
         <ul class="links">
-          <li>
-            <a href="index.html">About</a>
+          <li @click="$router.push('/')">
+            <a  >Home</a>
           </li>
-          <li>
-            <a href="about.html">Partners</a>
-          </li>
-          <li>
-            <a href="projects.html">Contact</a>
+          <li @click="$router.push('/Products')">
+            <a >Products</a>
           </li>
           <li @click="$router.push('/Login')">
             <a >Login</a>
+          </li>
+          <li @click="$router.push('/Cart')">
+            <a >Cart</a>
+            <span class="qty">{{ $store.getters.cartQuantity }}</span>
           </li>
         </ul>
         <!-- social media -->
@@ -106,6 +107,18 @@ Navbar
 ===============
 */
 
+.qty {
+  position: relative;
+  top: -40px;
+  left: 55px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  font-size: 17px;
+  color: #000;
+
+}
+
 nav {
     background: #777787;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -134,6 +147,9 @@ nav {
 
 .logo {
     height: 80px;
+}
+.links {
+  margin-top: 1rem;
 }
 
 .links a {
@@ -209,6 +225,12 @@ nav {
     }
     .social-icons a:hover {
         color: hsl(211, 27%, 70%);
+    }
+    .qty {
+  left: 45px;
+  top: -30px;
+  color: #000;
+
     }
 }
 

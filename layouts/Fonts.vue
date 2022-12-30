@@ -30,6 +30,7 @@ export default {}
 } */
 body {
   background-color: rgb(252, 235, 242);
+
 }
 template {
   font-family: 'roboto' !important;
@@ -70,7 +71,7 @@ template {
 }
 
 html::-webkit-scrollbar {
-  width: 4px;
+  width: 10px;
   border-radius: 200px;
 }
 

@@ -1,15 +1,12 @@
-
 <template>
-  <div class="mirade-dashboard-side-navbar">
-      <slot> </slot>
+  <div class="setup-dashboard-side-navbar">
+    <slot> </slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'newDashboardSideNav'
+  name: 'newDashboardSideNav',
 }
 </script>
-<style>
-
-</style>
+<style></style>

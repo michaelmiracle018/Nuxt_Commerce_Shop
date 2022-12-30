@@ -1,26 +1,38 @@
 <template>
   <section>
-    <div >
-      <article class="cart_item" v-for="(item, index) in cart" :key="index">
-        <img src="../../assets/images/car30.jpg" alt="item.name" />
+    <Nav />
+    <div v-if="cart.getCart.length > 0">
+      <article class="cart_item" v-for="item in cart.getCart" :key="item.id">
+        <img :src="item.image" alt="item.name" />
         <div>
-          <h4>name</h4>
-          <h4 class="item_price">GHc 1233</h4>
-          <button class="remove_btn">remove</button>
+          <h4>{{ item.title }}</h4>
+          <h4 class="item_price">$ {{ (item.price * item.quantity).toFixed(2) }}</h4>
+          <button
+            class="remove_btn"
+            @click="$store.commit('DELETE_CART', item.id)"
+          >
+            remove
+          </button>
         </div>
         <div>
-          <button class="icon_btn">
+          <button
+            class="icon_btn"
+            @click="$store.commit('INCREASE_CART', item.id)"
+          >
             <i class="fa-solid fa-plus"></i>
           </button>
-          <p class="amount">quantity</p>
-          <button class="icon_btn">
+          <p class="amount">{{ item.quantity }}</p>
+          <button
+            class="icon_btn"
+            @click="$store.commit('DECREASE_CART', item.id)"
+          >
             <i class="fa-solid fa-minus"></i>
           </button>
         </div>
       </article>
     </div>
-    <!-- <div class="empty_wrap" v-else> -->
-      <div>
+    <div class="empty_wrap" v-else>
+      <div class="empty_cart_wrap">
         <div class="empty_cart">
           <img src="../../assets/icons/icon-empty.png" alt="" />
         </div>
@@ -29,14 +41,15 @@
           Return To Products
         </button>
       </div>
-    <!-- </div> -->
+    </div>
     <div class="footer">
       <hr />
       <div class="total_cart">
         <h2>Total</h2>
-        <h2>GHC {{ getTotalItems }}</h2>
+        <h2>$ {{ $store.getters.getTotalItems }}</h2>
+
       </div>
-      <button class="btn clear_btn" @click="$store.commit('ClearCart')">
+      <button class="btn clear_btn" @click="$store.commit('CLEAR_CART')">
         clear cart
       </button>
     </div>
@@ -44,26 +57,31 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
+import Nav from '../../components/landingPage/Nav.vue'
 export default {
+  middleware: 'auth',
+
+  components: { Nav },
   computed: {
     cart() {
-      return this.$store.state.cart
+      return this.$store.getters
     },
-    ...mapGetters(['getTotalItems']),
   },
   head() {
     return {
-      title: 'Cart',
+      title: 'Cart Page',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'products Page',
+          content: 'Cart Page',
         },
       ],
     }
+  },
+
+  created() {
+    // console.log(this.cart.getCart);
   },
 }
 </script>
@@ -80,10 +98,12 @@ export default {
   grid-column-gap: 1.5rem;
   margin: 3rem auto;
   max-width: 1000px;
+  background-color: #fff;
 }
 
 .cart_item img {
-  width: 15rem;
+  width: 100%;
+  max-width: 15rem;
   height: 15rem;
   object-fit: cover;
 }
@@ -138,7 +158,10 @@ export default {
   border: none;
   border-radius: 50%;
   background-color: transparent;
-  margin: 7px 0;
+  margin: 2px 0;
+  color: #000;
+  width: 100%;
+  height: 100%;
 }
 
 .icon_btn:hover {
@@ -160,10 +183,12 @@ hr {
   display: flex;
   justify-content: space-between;
 }
-.empty_wrap {
-  display: flex;
-  justify-content: center;
+
+.empty_cart_wrap {
+  display: grid;
+  place-items: center;
 }
+
 .empty_cart img {
   width: 300px;
   height: 300px;

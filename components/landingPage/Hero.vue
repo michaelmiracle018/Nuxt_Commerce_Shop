@@ -76,7 +76,7 @@ export default {}
 }
 
 .shop_btn {
-  width: 130px;
+  width: 150px;
   height: 50px;
   color: #fff;
   font-family: 'montserrat';

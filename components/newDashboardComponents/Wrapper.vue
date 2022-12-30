@@ -1,11 +1,11 @@
 <template>
-  <div class="mirade-dashboard">
+  <div class="setup-dashboard" >
     <newDashboardHeader />
-    <div class="mirade-dashboard-main">
+    <div class="setup-dashboard-main">
       <slot></slot>
     </div>
-    <button class="mirade-dashboard-help-btn">
-      <img src="~assets/icons/help.svg" alt="">
+    <button class="setup-dashboard-help-btn">
+      <img src="~assets/icons/help.svg" alt="" />
     </button>
   </div>
 </template>
@@ -14,10 +14,11 @@
 import newDashboardHeader from './Header.vue'
 export default {
   name: 'newDashboardWrapper',
-  components: {newDashboardHeader}
+  components: { newDashboardHeader },
+  
 }
 </script>
 
 <style lang="scss" scoped>
-  @import '~assets/scss/wrapper.scss';
+@import '~assets/scss/wrapper.scss';
 </style>
